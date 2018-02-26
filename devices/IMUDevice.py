@@ -1,0 +1,2 @@
+from
+class IMUDevice(LoggerDevice):
