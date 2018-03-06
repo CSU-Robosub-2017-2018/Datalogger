@@ -1,10 +1,10 @@
-from .FileWriter import FileWriter
 import datetime
+from pathlib import Path
 
 class csv:
 
     def __init__(self, filename):
-        self.filename = filename.split('.')[0] + '00.csv'
+        self.filename = filename.split('.')[0] + '00.CSV'
         self.fileopen = False
 
     def write(self, strarray):
@@ -37,6 +37,12 @@ class csv:
 
     def open(self, loggerlist):
         if not self.fileopen:
+            for i in range(0, 100):
+                self.filename = self.filename[:-6] + str(int(i / 10)) + self.filename[-5:]
+                self.filename = self.filename[:-5] + str(i % 10) + self.filename[-4:]
+                my_file = Path(self.filename)
+                if not my_file.is_file():
+                    break
             self.writer = open(self.filename, "w")
             self.fileopen = True
             self.write_headers(loggerlist)
