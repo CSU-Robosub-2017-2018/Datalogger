@@ -14,7 +14,7 @@ class csv:
         retstr = retstr + strarray[len(strarray)-1]
         self.writer.write(retstr)
 
-    def write_data(self, loggerlist):
+    def write_data(self, loggerlist=[]):
         self.write_time()
         for i in range(0, len(loggerlist)):
             self.write(loggerlist[i].get_data())
@@ -26,7 +26,7 @@ class csv:
     def write_newline(self):
         self.writer.write('\n')
 
-    def write_headers(self, loggerlist = []):
+    def write_headers(self, loggerlist=[]):
         self.write_date()
         for i in range(0, len(loggerlist)):
             self.write(loggerlist[i].get_headers())

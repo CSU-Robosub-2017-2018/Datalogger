@@ -1,5 +1,3 @@
-
-
 class LoggerDevice:
 
     def __init__(self):
