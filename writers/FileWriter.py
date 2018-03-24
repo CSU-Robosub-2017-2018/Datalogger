@@ -7,8 +7,10 @@ class FileWriter:
         self.file = None
 
     def open(self):
+        print("open")
 
     def close(self):
+        print("close")
 
     def write(self):
         print("write")
