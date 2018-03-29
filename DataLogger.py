@@ -1,3 +1,6 @@
+import threading
+from time import sleep
+
 
 class DataLogger:
 
@@ -16,6 +19,9 @@ class DataLogger:
         if not self.running:
             self.running = True
             self.FileWriter.open(self.devices)
+            self.thread = threading.Thread(target=self.log, args=())
+            self.thread.daemon = True  # Daemonize thread
+            self.thread.start()
         else:
             print("[WARNING] Cannot start logger while logger is already running!")
 
@@ -24,4 +30,7 @@ class DataLogger:
         self.FileWriter.close()
 
     def log(self):
-        self.FileWriter.write_data(self.devices)
+        while self.running:
+            print('log')
+            self.FileWriter.write_data(self.devices)
+            sleep(0.25)

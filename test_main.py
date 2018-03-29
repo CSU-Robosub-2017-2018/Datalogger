@@ -10,8 +10,7 @@ logger.start()
 
 try:
     while True:
-        logger.log()
-        print("log")
-        sleep(.5)
+        print("hi")
+        sleep(1)
 finally:
     logger.end()
