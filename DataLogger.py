@@ -31,6 +31,5 @@ class DataLogger:
 
     def log(self):
         while self.running:
-            print('log')
             self.FileWriter.write_data(self.devices)
             sleep(0.25)
